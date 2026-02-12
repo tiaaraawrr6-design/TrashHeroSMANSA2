@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrashHero SMAN 1 Citeureup - Tema Pink Hijau Full Konsisten</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-green: #2ecc71;
+            --dark-green: #27ae60;
+            --primary-pink: #ff6bad;
+            --dark-pink: #e84393;
+            --soft-pink: #fff0f6;
+            --white: #ffffff;
+            --light-gray: #fdf2f7;
+            --dark-text: #2d3436;
+            --transition: all 0.3s ease;
+            --grad-pink-green: linear-gradient(135deg, rgba(255, 107, 173, 0.95), rgba(46, 204, 113, 0.85));
+        }
+
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; cursor: pointer; }
+        ul { list-style: none; }
+
+        /* Navbar */
+        nav {
+            background-color: var(--white);
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(232, 67, 147, 0.1);
+        }
+
+        .logo { font-size: 1.2rem; font-weight: 700; color: var(--dark-pink); }
+        .logo span { color: var(--dark-green); }
+
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { font-weight: 500; font-size: 0.95rem; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary-pink); }
+
+        .login-btn {
+            background-color: var(--primary-pink);
+            color: white !important;
+            padding: 8px 25px;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(255, 107, 173, 0.3);
+        }
+
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--dark-pink); }
+
+        /* Hero Section */
+        .hero {
+            height: 85vh;
+            background: var(--grad-pink-green), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .hero p { font-size: 1.1rem; max-width: 650px; margin-bottom: 25px; }
+
+        /* Tree Avatar Container */
+        .tree-container {
+            padding: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 250px;
+        }
+
+        .tree-avatar {
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .tree-avatar.grow { transform: scale(1.2); }
+
+        .tree-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: var(--white);
+            color: var(--dark-pink);
+            padding: 4px 18px;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .exp-bar-container {
+            width: 80%;
+            height: 10px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+            margin-top: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .exp-bar-fill {
+            height: 100%;
+            background: var(--primary-green);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* Unified Section Styling */
+        .unified-section {
+            background: var(--grad-pink-green);
+            padding: 80px 8%;
+            color: var(--white);
+        }
+
+        .unified-section .section-title h2 { color: var(--white); text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .unified-section .section-title h2::after { background: var(--white); }
+        .unified-section .section-title p { color: rgba(255,255,255,0.9); }
+
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { position: relative; display: inline-block; padding-bottom: 10px; font-size: 2rem; }
+        .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; border-radius: 3px; }
+
+        /* Card Styling */
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.15); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px; 
+            padding: 30px; 
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            color: var(--white);
+        }
+
+        .leaderboard-card { 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+
+        .rank-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 20px; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        
+        .rank-item:last-child { border-bottom: none; }
+        .rank-item:hover { background: rgba(255, 255, 255, 0.1); transform: scale(1.02); border-radius: 10px; }
+
+        .rank-number { 
+            width: 35px; 
+            height: 35px; 
+            background: var(--white); 
+            color: var(--dark-pink); 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: bold; 
+            margin-right: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .rank-info { display: flex; align-items: center; }
+
+        /* Grid for Services */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        
+        .feature-card {
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .feature-card i { 
+            font-size: 2.5rem; 
+            color: var(--white); 
+            margin-bottom: 20px; 
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .feature-card h3 { margin-bottom: 10px; }
+        .feature-card p { font-size: 0.9rem; opacity: 0.9; }
+
+        /* Modals */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(45, 52, 54, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 4px solid var(--soft-pink);
+            color: var(--dark-text);
+        }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--primary-pink); }
+        .modal h3 { margin-bottom: 20px; color: var(--dark-pink); border-bottom: 2px solid var(--soft-pink); padding-bottom: 10px; }
+        
+        /* Mission List Styling */
+        .mission-item {
+            background: var(--soft-pink);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+        .mission-info h4 { font-size: 0.95rem; color: var(--dark-text); }
+        .mission-info p { font-size: 0.8rem; color: #636e72; line-height: 1.3; }
+        .mission-btn {
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+        .mission-btn.completed {
+            background: #b2bec3;
+            cursor: default;
+        }
+
+        /* Forms */
+        .form-group { margin-bottom: 18px; text-align: left; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px; border: 2px solid var(--soft-pink); border-radius: 12px; font-size: 0.95rem; outline: none;
+        }
+        .form-group input[type="file"] {
+            padding: 8px;
+            background: var(--soft-pink);
+            border: 2px dashed var(--primary-pink);
+            cursor: pointer;
+        }
+        .submit-btn {
+            width: 100%; background: var(--primary-pink); color: white; border: none; padding: 14px;
+            border-radius: 12px; font-weight: 600; cursor: pointer; transition: var(--transition);
+        }
+
+        /* Portal Dashboard Specifics */
+        .dashboard-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .stat-box { background: white; border: 2px solid var(--soft-pink); padding: 10px; border-radius: 15px; text-align: center; }
+        .stat-box small { font-size: 0.7rem; color: #636e72; display: block; }
+        .stat-box span { font-weight: bold; color: var(--dark-pink); font-size: 1rem; }
+        
+        .activity-feed { margin-top: 15px; }
+        .activity-item { font-size: 0.8rem; padding: 8px 0; border-bottom: 1px solid var(--soft-pink); display: flex; align-items: center; gap: 10px; }
+        .activity-item i { color: var(--primary-green); }
+
+        /* Toast */
+        #toast {
+            position: fixed;
+            bottom: 30px; left: 50%; transform: translateX(-50%);
+            background: var(--dark-pink); color: white;
+            padding: 12px 30px; border-radius: 50px;
+            display: none; z-index: 3000;
+            box-shadow: 0 10px 20px rgba(232, 67, 147, 0.4);
+        }
+
+        /* Footer */
+        footer { background-color: var(--dark-text); color: #fdf2f7; padding: 60px 8% 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+
+        /* Mobile */
+        @media (max-width: 968px) {
+            .nav-links { position: fixed; right: -100%; top: 80px; flex-direction: column; background: var(--white); width: 100%; padding: 40px 0; transition: 0.4s; color: var(--dark-text); }
+            .nav-links.active { right: 0; }
+            .hamburger { display: block; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="toast">Pesan berhasil dikirim!</div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">TrashHero <span>SMAN 1 Citeureup</span></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#papan-skor">Papan Skor</a></li>
+            <li><a href="#lapor">Layanan Siswa</a></li>
+            <li><a id="btnPortal" class="login-btn" onclick="openPortal()">Portal Siswa</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="tree-container">
+            <div id="treeAvatar" class="tree-avatar">🌱</div>
+            <div id="treeLevel" class="tree-label">Level 1: Benih</div>
+            <div class="exp-bar-container">
+                <div id="expFill" class="exp-bar-fill"></div>
+            </div>
+            <p style="font-size: 0.75rem; margin-top: 10px; color: #fff; font-weight: 500;">Tumbuhkan pohonmu dengan misi harian!</p>
+        </div>
+        <h1>Wujudkan Sekolah Zero Waste!</h1>
+        <p>Platform kolaborasi siswa SMAN 1 Citeureup untuk menjaga kebersihan lingkungan sekolah. Mulai dari kelasmu, untuk masa depan kita.</p>
+        <div class="hero-btns">
+            <a onclick="openModal('modalLapor')" class="btn" style="background: white; color: var(--dark-pink); padding: 14px 35px; border-radius: 50px; font-weight: 700; box-shadow: 0 10px 20px rgba(0,0,0,0.1); cursor: pointer;">Lapor Temuan Sampah</a>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section class="unified-section" id="papan-skor">
+        <div class="section-title">
+            <h2>Papan Skor Kebersihan Kelas</h2>
+            <p>Update otomatis setiap ada aksi kebersihan yang divalidasi!</p>
+        </div>
+        <div class="glass-card leaderboard-card">
+            <div id="leaderboardList"></div>
+        </div>
+    </section>
+
+    <!-- Unified Services Section -->
+    <section class="unified-section" id="lapor">
+        <div class="section-title">
+            <h2>Layanan Siswa</h2>
+            <p>Selesaikan misi harian untuk mendapatkan poin dan menumbuhkan avatar benih pohonmu.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card glass-card" onclick="openModal('modalLapor')">
+                <i class="fas fa-bullhorn"></i>
+                <h3>Lapor Area Kotor</h3>
+                <p>Ambil foto area yang kotor dan kirimkan laporan. (+1 Aksi Pohon)</p>
+            </div>
+            <div class="feature-card glass-card" onclick="openModal('modalPiket')">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Absensi Piket</h3>
+                <p>Laporkan bahwa kelasmu telah selesai melaksanakan piket harian. (+1 Aksi Pohon)</p>
+            </div>
+            <div class="feature-card glass-card" onclick="openModal('modalMisi')">
+                <i class="fas fa-tasks"></i>
+                <h3>Misi Harian</h3>
+                <p>Selesaikan tugas sederhana untuk bonus poin dan pertumbuhan pohonmu.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALS -->
+    <div id="modalLapor" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalLapor')">&times;</span>
+            <h3>Formulir Laporan Sampah</h3>
+            <form id="formLapor">
+                <div class="form-group">
+                    <label>Lokasi Temuan</label>
+                    <select required id="lokasiSampah">
+                        <option value="">Pilih Lokasi...</option>
+                        <option value="Kantin">Kantin Sehat</option>
+                        <option value="Koridor">Koridor Kelas</option>
+                        <option value="Lapangan">Lapangan Utama</option>
+                        <option value="Toilet">Toilet</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Bukti Foto (Wajib)</label>
+                    <input type="file" id="fotoSampah" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi Singkat</label>
+                    <textarea id="deskripsiSampah" placeholder="Contoh: Ada tumpahan air di depan kelas..." rows="3"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Kirim Laporan (+10 Poin)</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalPiket" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalPiket')">&times;</span>
+            <h3>Konfirmasi Piket Harian</h3>
+            <form id="formPiket">
+                <div class="form-group">
+                    <label>Pilih Kelas</label>
+                    <select required id="kelasPiket">
+                        <option value="XII-B3">XII-B3</option>
+                        <option value="X-12">X-12</option>
+                        <option value="XII-D2">XII-D2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Bukti Foto Kebersihan Kelas (Wajib)</label>
+                    <input type="file" id="fotoPiket" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <label>Siswa Tidak Melaksanakan Piket (Opsional)</label>
+                    <textarea id="siswaAlfaPiket" placeholder="Tuliskan nama-nama siswa yang tidak membantu piket hari ini..." rows="2"></textarea>
+                </div>
+                <button type="submit" class="submit-btn" style="background-color: var(--primary-green);">Konfirmasi Selesai (+50 Poin)</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalMisi" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalMisi')">&times;</span>
+            <h3>Daftar Misi Harian</h3>
+            <div id="missionListContainer">
+                <!-- Mission 1 -->
+                <div class="mission-item">
+                    <div class="mission-info">
+                        <h4>Bawa Tumbler</h4>
+                        <p>Gunakan botol minum sendiri hari ini.</p>
+                    </div>
+                    <button class="mission-btn" onclick="completeMission(this, 20, 'Bawa Tumbler')">Klaim 20 P</button>
+                </div>
+                <!-- Mission 2 -->
+                <div class="mission-item">
+                    <div class="mission-info">
+                        <h4>Bersihkan Laci Meja</h4>
+                        <p>Pastikan tidak ada sampah di dalam laci meja.</p>
+                    </div>
+                    <button class="mission-btn" onclick="completeMission(this, 15, 'Bersihkan Laci')">Klaim 15 P</button>
+                </div>
+                <!-- Mission 3 -->
+                <div class="mission-item">
+                    <div class="mission-info">
+                        <h4>Pilah Sampah</h4>
+                        <p>Masukkan sampah sesuai jenisnya.</p>
+                    </div>
+                    <button class="mission-btn" onclick="completeMission(this, 25, 'Pilah Sampah')">Klaim 25 P</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalPortal" class="modal">
+        <div class="modal-content" id="portalContent">
+            <span class="close-modal" onclick="closeModal('modalPortal')">&times;</span>
+            <div id="loginView">
+                <h3>Portal Login Siswa</h3>
+                <form id="formLogin">
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="pass" placeholder="Password default: smansa" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Masuk Ke Portal</button>
+                </form>
+            </div>
+            <div id="dashboardView" style="display: none;">
+                <h3>Dashboard Siswa</h3>
+                <div style="background: var(--soft-pink); padding: 20px; border-radius: 20px; margin-bottom: 20px; border-left: 5px solid var(--primary-pink);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <div>
+                            <h4 style="color: var(--dark-pink); margin: 0;">Andi Pratama</h4>
+                            <small style="color: #636e72;">Kelas X-12</small>
+                        </div>
+                        <div style="font-size: 1.5rem;" id="portalAvatar">🌱</div>
+                    </div>
+                    
+                    <div class="dashboard-stats">
+                        <div class="stat-box">
+                            <small>Poin Saya</small>
+                            <span id="pStatPoints">1350</span>
+                        </div>
+                        <div class="stat-box">
+                            <small>Total Aksi</small>
+                            <span id="pStatActions">0</span>
+                        </div>
+                    </div>
+
+                    <div class="activity-feed">
+                        <p style="font-size: 0.75rem; font-weight: bold; color: var(--dark-pink); margin-bottom: 8px;">AKTIVITAS TERBARU</p>
+                        <div id="recentActivity">
+                            <p style="font-size: 0.7rem; color: #b2bec3;">Belum ada aktivitas hari ini.</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="logout()" class="submit-btn" style="background: #636e72;">Keluar Portal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="color: var(--primary-pink); margin-bottom: 15px;">Trash<span>Hero</span></div>
+                <p>Sistem Management Sampah Digital SMAN 1 Citeureup. Kolaborasi OSIS & Kader Lingkungan.</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">&copy; 2023 TrashHero SMAN 1 Citeureup Interactive System.</p>
+    </footer>
+
+    <script>
+        let kelasData = [
+            { nama: "XII-B3", poin: 1500 },
+            { nama: "X-12", poin: 1350 },
+            { nama: "XII-D2", poin: 1100 }
+        ];
+
+        let playerStats = { 
+            isLoggedIn: false, 
+            totalActions: 0, 
+            activities: [] 
+        };
+
+        const treeLevels = [
+            { icon: "🌱", label: "Level 1: Benih", min: 0 },
+            { icon: "🌿", label: "Level 2: Tunas", min: 1 },
+            { icon: "🌳", label: "Level 3: Pohon Muda", min: 3 },
+            { icon: "🌲", label: "Level 4: Pohon Dewasa", min: 6 }
+        ];
+
+        function addActivity(text) {
+            const time = new Array(new Date()).map(d => d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0'))[0];
+            playerStats.activities.unshift({ text, time });
+            if(playerStats.activities.length > 3) playerStats.activities.pop();
+            renderDashboard();
+        }
+
+        function updateTreeProgress() {
+            playerStats.totalActions++;
+            let lvl = treeLevels[0];
+            for(let t of treeLevels) if(playerStats.totalActions >= t.min) lvl = t;
+            
+            const avatar = document.getElementById('treeAvatar');
+            avatar.innerText = lvl.icon;
+            avatar.classList.add('grow');
+            setTimeout(() => avatar.classList.remove('grow'), 500);
+            document.getElementById('treeLevel').innerText = lvl.label;
+            
+            const progress = Math.min((playerStats.totalActions / 8) * 100, 100);
+            document.getElementById('expFill').style.width = progress + "%";
+            renderDashboard();
+        }
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        
+        function openPortal() {
+            openModal('modalPortal');
+            if(playerStats.isLoggedIn) showDashboard(); else showLogin();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        }
+
+        function renderLeaderboard() {
+            const list = document.getElementById('leaderboardList');
+            kelasData.sort((a, b) => b.poin - a.poin);
+            list.innerHTML = kelasData.map((k, i) => `
+                <div class="rank-item">
+                    <div class="rank-info">
+                        <div class="rank-number">${i+1}</div>
+                        <span><strong>Kelas ${k.nama}</strong></span>
+                    </div>
+                    <span style="color: var(--white); font-weight: bold; font-size: 1.1rem;">${k.poin} Poin</span>
+                </div>
+            `).join('');
+        }
+
+        function renderDashboard() {
+            if(!playerStats.isLoggedIn) return;
+            
+            // Update Stats
+            document.getElementById('pStatPoints').innerText = kelasData[1].poin;
+            document.getElementById('pStatActions').innerText = playerStats.totalActions;
+            
+            // Update Avatar based on Level
+            let lvl = treeLevels[0];
+            for(let t of treeLevels) if(playerStats.totalActions >= t.min) lvl = t;
+            document.getElementById('portalAvatar').innerText = lvl.icon;
+
+            // Update Activity Feed
+            const feed = document.getElementById('recentActivity');
+            if(playerStats.activities.length === 0) {
+                feed.innerHTML = '<p style="font-size: 0.7rem; color: #b2bec3;">Belum ada aktivitas hari ini.</p>';
+            } else {
+                feed.innerHTML = playerStats.activities.map(a => `
+                    <div class="activity-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div style="flex:1">
+                            <p style="margin:0">${a.text}</p>
+                            <small style="color:#b2bec3">${a.time}</small>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function showLogin() {
+            document.getElementById('loginView').style.display = 'block';
+            document.getElementById('dashboardView').style.display = 'none';
+        }
+
+        function showDashboard() {
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('dashboardView').style.display = 'block';
+            renderDashboard();
+        }
+
+        document.getElementById('formLogin').addEventListener('submit', (e) => {
+            e.preventDefault();
+            if(document.getElementById('pass').value.toLowerCase() === 'smansa') {
+                playerStats.isLoggedIn = true;
+                showDashboard();
+                showToast("Selamat datang, Andi!");
+            } else {
+                showToast("Password salah!");
+            }
+        });
+
+        function logout() { playerStats.isLoggedIn = false; showLogin(); }
+
+        function completeMission(btn, pts, missionName) {
+            if(btn.classList.contains('completed')) return;
+            btn.innerText = "Selesai ✓";
+            btn.classList.add('completed');
+            kelasData[1].poin += pts;
+            updateTreeProgress();
+            addActivity(`Menyelesaikan misi: ${missionName}`);
+            renderLeaderboard();
+            showToast(`Misi Selesai! +${pts} Poin.`);
+        }
+
+        document.getElementById('formLapor').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const lokasi = document.getElementById('lokasiSampah').value;
+            kelasData[1].poin += 10;
+            updateTreeProgress();
+            addActivity(`Melaporkan area kotor di ${lokasi}`);
+            renderLeaderboard();
+            closeModal('modalLapor');
+            showToast("Laporan terkirim! +10 Poin.");
+            e.target.reset();
+        });
+
+        document.getElementById('formPiket').addEventListener('submit', (e) => {
+            e.preventDefault();
+            kelasData[1].poin += 50;
+            updateTreeProgress();
+            addActivity(`Konfirmasi absensi piket kelas`);
+            renderLeaderboard();
+            closeModal('modalPiket');
+            showToast("Piket terverifikasi! +50 Poin.");
+            e.target.reset();
+        });
+
+        window.onload = renderLeaderboard;
+    </script>
+</body>
+</html>
